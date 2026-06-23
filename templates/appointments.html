@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Appointment – MediCare Hospital Portal</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+
+  <!-- ======= NAVBAR ======= -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="/home" class="nav-logo">
+        <div class="logo-icon">M</div>
+        <span class="logo-text">Medi<span>Care</span></span>
+      </a>
+      <div class="patient-welcome">
+          Welcome, {{ patient_name }} 👋
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/home">Home</a></li>
+        <li><a href="/doctors">Doctors</a></li>
+        <li><a href="/appointments" class="active">Appointments</a></li>
+        <li><a href="/patient-logout">Logout</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ======= PAGE HEADER ======= -->
+  <div class="page-header">
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+
+  <div style="
+  background:#d4edda;
+  color:#155724;
+  padding:15px;
+  margin:20px;
+  border-radius:10px;
+  font-weight:bold;
+  text-align:center;">
+      ✅ {{ messages[0] }}
+  </div>
+
+  {% endif %}
+  {% endwith %}
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="/home">Home</a> <span>›</span> <span>Book Appointment</span>
+      </div>
+      <h1>Book an Appointment</h1>
+      <p>Fill in the form below to schedule a visit with one of our specialists</p>
+    </div>
+  </div>
+
+  <!-- ======= APPOINTMENTS SECTION ======= -->
+  <section class="appointments-section">
+    <div class="container appt-inner">
+
+      <!-- ===== BOOKING FORM ===== -->
+      <div class="form-card">
+        <h2>📋 New Appointment</h2>
+        <p class="sub">All fields marked * are required</p>
+
+        <form id="appointmentForm" method="POST" action="/book-appointment">
+
+          <!-- Name + Phone row -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="patientName">Patient Name *</label>
+              <input type="text" id="patientName" name="patientName" placeholder="Full name" />
+              <span class="form-error" id="patientNameError">Please enter your name.</span>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" placeholder="10-digit mobile number" maxlength="10" />
+              <span class="form-error" id="phoneError">Enter a valid 10-digit number.</span>
+            </div>
+          </div>
+
+          <!-- Doctor Selection -->
+          <div class="form-group">
+            <label for="doctorSelect">Select Doctor *</label>
+            <select id="doctorSelect" name="doctorSelect">
+              <option value="" disabled selected>-- Choose a specialist --</option>
+              <option value="Dr. Arjun Sharma">Dr. Arjun Sharma – Cardiology</option>
+              <option value="Dr. Priya Mehta">Dr. Priya Mehta – Pediatrics</option>
+              <option value="Dr. Rajesh Kumar">Dr. Rajesh Kumar – Neurology</option>
+              <option value="Dr. Sunita Rao">Dr. Sunita Rao – Orthopedics</option>
+              <option value="Dr. Vikram Patel">Dr. Vikram Patel – General Medicine</option>
+              <option value="Dr. Ananya Singh">Dr. Ananya Singh – Emergency Care</option>
+              <option value="Dr. Mohan Das">Dr. Mohan Das – Cardiology</option>
+              <option value="Dr. Kavitha Nair">Dr. Kavitha Nair – Neurology</option>
+            </select>
+            <span class="form-error" id="doctorSelectError">Please select a doctor.</span>
+          </div>
+
+          <!-- Date + Time row -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="apptDate">Appointment Date *</label>
+              <input type="date" id="apptDate" name="apptDate" />
+              <span class="form-error" id="apptDateError">Please choose a future date.</span>
+            </div>
+            <div class="form-group">
+              <label for="timeSlot">Time Slot *</label>
+              <select id="timeSlot" name="timeSlot">
+                <option value="" disabled selected>-- Select time --</option>
+                <option value="08:00 AM – 09:00 AM">08:00 AM – 09:00 AM</option>
+                <option value="09:00 AM – 10:00 AM">09:00 AM – 10:00 AM</option>
+                <option value="10:00 AM – 11:00 AM">10:00 AM – 11:00 AM</option>
+                <option value="11:00 AM – 12:00 PM">11:00 AM – 12:00 PM</option>
+                <option value="12:00 PM – 01:00 PM">12:00 PM – 01:00 PM</option>
+                <option value="02:00 PM – 03:00 PM">02:00 PM – 03:00 PM</option>
+                <option value="03:00 PM – 04:00 PM">03:00 PM – 04:00 PM</option>
+                <option value="04:00 PM – 05:00 PM">04:00 PM – 05:00 PM</option>
+                <option value="05:00 PM – 06:00 PM">05:00 PM – 06:00 PM</option>
+              </select>
+              <span class="form-error" id="timeSlotError">Please select a time slot.</span>
+            </div>
+          </div>
+
+          <!-- Symptoms -->
+          <div class="form-group">
+            <label for="symptoms">Symptoms / Reason for Visit *</label>
+            <textarea id="symptoms" name="symptoms" rows="4" placeholder="Briefly describe your symptoms or reason for the visit…"></textarea>
+            <span class="form-error" id="symptomsError">Please describe your symptoms.</span>
+          </div>
+
+          <button type="submit" class="btn btn-primary submit-btn" id="submitBtn">
+            ✅ Confirm Appointment
+          </button>
+
+        </form>
+      </div>
+
+      <!-- ===== APPOINTMENT HISTORY ===== -->
+      <div class="history-card">
+        <h2>🗂 My Appointments</h2>
+        <div id="appointmentHistory">
+
+          {% if appointments %}
+
+            {% for appt in appointments %}
+
+            <div class="appt-item">
+
+              <h4>👤 {{ appt[1] }}</h4>
+
+              <p><strong>Doctor:</strong> {{ appt[4] }}</p>
+
+              <p><strong>Date:</strong> {{ appt[5] }}</p>
+    
+              <p><strong>Time:</strong> {{ appt[6] }}</p>
+
+              <p><strong>Symptoms:</strong> {{ appt[7] }}</p>
+
+              <p><strong>Status:</strong> {{ appt[8] }}</p>
+
+              {% if appt[8] == 'Pending' %}
+
+              <a href="/delete-appointment/{{ appt[0] }}"
+                onclick="return confirm('Delete appointment?')"
+                style="background:red;
+                       color:white;
+                       padding:8px 12px;
+                       border-radius:5px;
+                       text-decoration:none;">
+                Delete
+              </a>
+
+              {% endif %}
+
+            </div>
+
+            <hr>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="empty-history">
+              <div class="empty-icon">📭</div>
+              <p>No appointments booked yet.</p>
+            </div>
+
+        {% endif %}
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======= EMERGENCY BANNER ======= -->
+  <div class="emergency-banner">
+    <div class="container emergency-inner">
+      <div class="emg-text">
+        <span class="emg-icon">🚑</span>
+        <div>
+          <h3>Medical Emergency? Don't Wait — Call Now</h3>
+          <p>Our 24/7 emergency team is always on standby.</p>
+        </div>
+      </div>
+      <span class="emg-phone">📞 1800-MED-CARE</span>
+    </div>
+  </div>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="logo-text">Medi<span>Care</span> Hospital</span>
+          <p>Committed to delivering compassionate, high-quality healthcare to every patient since 1998.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Web">🌐</a>
+            <a href="#" aria-label="Twitter">🐦</a>
+            <a href="#" aria-label="Instagram">📸</a>
+            <a href="#" aria-label="LinkedIn">💼</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/doctors">Find a Doctor</a></li>
+            <li><a href="/appointments">Book Appointment</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Specialties</h4>
+          <ul>
+            <li><a href="#">General Medicine</a></li>
+            <li><a href="#">Cardiology</a></li>
+            <li><a href="#">Pediatrics</a></li>
+            <li><a href="#">Orthopedics</a></li>
+            <li><a href="#">Neurology</a></li>
+            <li><a href="#">Emergency Care</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <ul class="footer-contact">
+            <li><span>📍</span><span>123 Hospital Road, Kurnool, AP – 518001</span></li>
+            <li><span>📞</span><span>1800-MED-CARE</span></li>
+            <li><span>✉️</span><span>info@medicare-hospital.com</span></li>
+            <li><span>⏰</span><span>OPD: Mon – Sat, 8 AM – 6 PM</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 MediCare Hospital. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast-container"></div>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <!-- AI Assistant Button -->
+<div class="ai-button" onclick="toggleAssistant()">
+    🤖
+</div>
+
+<!-- AI Assistant Popup -->
+<div class="ai-popup" id="aiPopup">
+
+    <div class="ai-header">
+        🤖 MediCare Assistant
+    </div>
+
+    <div class="ai-body">
+
+        <input
+            type="text"
+            id="symptomInput"
+            placeholder="Describe your symptoms">
+
+        <button
+            type="button"
+            onclick="recommendDoctor()">
+            Get Recommendation
+        </button>
+
+        <div id="recommendation"></div>
+
+    </div>
+
+</div>
+</body>
+</html>

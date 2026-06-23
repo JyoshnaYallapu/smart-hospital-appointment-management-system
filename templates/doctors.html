@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Doctors – MediCare Hospital Portal</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+
+  <!-- ======= NAVBAR ======= -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="/home" class="nav-logo">
+        <div class="logo-icon">M</div>
+        <span class="logo-text">Medi<span>Care</span></span>
+      </a>
+      <div class="patient-welcome">
+          Welcome, {{ patient_name }} 👋
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/home">Home</a></li>
+        <li><a href="/doctors" class="active">Doctors</a></li>
+        <li><a href="/appointments">Appointments</a></li>
+        <li><a href="/patient-logout">Logout</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ======= PAGE HEADER ======= -->
+  <div class="page-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="/home">Home</a> <span>›</span> <span>Our Doctors</span>
+      </div>
+      <h1>Meet Our Specialists</h1>
+      <p>Over 120 experienced doctors across 12+ specialties, dedicated to your well-being</p>
+    </div>
+  </div>
+
+  <!-- ======= SEARCH BAR ======= -->
+  <div class="search-section">
+    <div class="container">
+      <div class="search-bar-wrap">
+        <input
+          type="text"
+          id="doctorSearch"
+          placeholder="Search by doctor name or specialty…"
+          autocomplete="off"
+        />
+        <span class="search-ico">🔍</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= DOCTORS GRID ======= -->
+  <section class="doctors-section">
+    <div class="container">
+      <div class="doctors-grid" id="doctorsGrid">
+
+        <!-- Card 1 -->
+        <div class="doctor-card" data-name="dr. arjun sharma" data-specialty="cardiology">
+          <div class="doctor-card-top">
+            <div class="doctor-avatar">👨‍⚕️</div>
+            <h3>Dr. Arjun Sharma</h3>
+            <span class="doctor-specialty">Cardiology</span>
+          </div>
+          <div class="doctor-card-body">
+            <div class="doc-info-row">
+              <span class="info-icon">🎓</span>
+              <span><strong>MBBS, MD (Cardiology)</strong> – AIIMS Delhi</span>
+            </div>
+            <div class="doc-info-row">
+              <span class="info-icon">⭐</span>
+              <span><strong>18 years</strong> of experience</span>
+            </div>
+            <div class="doc-info-row">
+              <span class="info-icon">🕐</span>
+              <span>Mon – Fri: 9:00 AM – 1:00 PM</span>
+            </div>
+            <span class="availability-badge available">Available Today</span>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="doctor-card" data-name="dr. priya mehta" data-specialty="pediatrics">
+          <div class="doctor-card-top">
+            <div class="doctor-avatar">👩‍⚕️</div>
+            <h3>Dr. Priya Mehta</h3>
+            <span class="doctor-specialty">Pediatrics</span>
+          </div>
+          <div class="doctor-card-body">
+            <div class="doc-info-row">
+              <span class="info-icon">🎓</span>
+              <span><strong>MBBS, DCH, MD (Pediatrics)</strong> – CMC Vellore</span>
+            </div>
+            <div class="doc-info-row">
+              <span class="info-icon">⭐</span>
+              <span><strong>12 years</strong> of experience</span>
+            </div>
+            <div class="doc-info-row">
+              <span class="info-icon">🕐</span>
+              <span>Mon, Wed, Fri: 10:00 AM – 2:00 PM</span>
+            </div>
+            <span class="availability-badge available">Available Today</span>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="doctor-card" data-name="dr. rajesh kumar" data-specialty="neurology">
+          <div class="doctor-card-top">
+            <div class="doctor-avatar">🧑‍⚕️</div>
+            <h3>Dr. Rajesh Kumar</h3>
+            <span class="doctor-specialty">Neurology</span>
+          </div>
+          <div class="doctor-card-body">
+            <div class="doc-info-row">
+              <span class="info-icon">🎓</span>
+              <span><strong>MBBS, DM (Neurology)</strong> – NIMHANS Bangalore</span>
+            </div>
+            <div class="doc-info-row">
+              <span class="info-icon">⭐</span>
+              <span><strong>22 years</strong> of experience</span>
+            </div>
+            <div class="doc-info-row">
+              <span class="info-icon">🕐</span>
+              <span>Tue, Thu, Sat: 2:00 PM – 6:00 PM</span>
+            </div>
+            <span class="availability-badge not-available">Not Available Today</span>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="doctor-card" data-name="dr. sunita rao" data-specialty="orthopedics">
+          <div class="doctor-card-top">
+            <div class="doctor-avatar">👩‍⚕️</div>
+            <h3>Dr. Sunita Rao</h3>
+            <span class="doctor-specialty">Orthopedics</span>
+          </div>
+          <div class="doctor-card-body">
+            <div class="doc-info-row">
+              <span class="info-icon">🎓</span>
+              <span><strong>MBBS, MS (Ortho)</strong> – Osmania Medical College</span>
+            </div>
+            <div class="doc-info-row">
+              <span class="info-icon">⭐</span>
+              <span><strong>15 years</strong> of experience</span>
+            </div>
+            <div class="doc-info-row">
+              <span class="info-icon">🕐</span>
+              <span>Mon – Sat: 8:00 AM – 12:00 PM</span>
+            </div>
+            <span class="availability-badge available">Available Today</span>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="doctor-card" data-name="dr. vikram patel" data-specialty="general medicine">
+          <div class="doctor-card-top">
+            <div class="doctor-avatar">👨‍⚕️</div>
+            <h3>Dr. Vikram Patel</h3>
+            <span class="doctor-specialty">General Medicine</span>
+          </div>
+          <div class="doctor-card-body">
+            <div class="doc-info-row">
+              <span class="info-icon">🎓</span>
+              <span><strong>MBBS, MD (Internal Medicine)</strong> – JIPMER</span>
+            </div>
+            <div class="doc-info-row">
+              <span class="info-icon">⭐</span>
+              <span><strong>10 years</strong> of experience</span>
+            </div>
+            <div class="doc-info-row">
+              <span class="info-icon">🕐</span>
+              <span>Mon – Fri: 11:00 AM – 3:00 PM</span>
+            </div>
+            <span class="availability-badge available">Available Today</span>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="doctor-card" data-name="dr. ananya singh" data-specialty="emergency care">
+          <div class="doctor-card-top">
+            <div class="doctor-avatar">👩‍⚕️</div>
+            <h3>Dr. Ananya Singh</h3>
+            <span class="doctor-specialty">Emergency Care</span>
+          </div>
+          <div class="doctor-card-body">
+            <div class="doc-info-row">
+              <span class="info-icon">🎓</span>
+              <span><strong>MBBS, MD (Emergency Medicine)</strong> – KEM Mumbai</span>
+            </div>
+            <div class="doc-info-row">
+              <span class="info-icon">⭐</span>
+              <span><strong>9 years</strong> of experience</span>
+            </div>
+            <div class="doc-info-row">
+              <span class="info-icon">🕐</span>
+              <span>24/7 On-Call Availability</span>
+            </div>
+            <span class="availability-badge available">Available 24/7</span>
+          </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="doctor-card" data-name="dr. mohan das" data-specialty="cardiology">
+          <div class="doctor-card-top">
+            <div class="doctor-avatar">👨‍⚕️</div>
+            <h3>Dr. Mohan Das</h3>
+            <span class="doctor-specialty">Cardiology</span>
+          </div>
+          <div class="doctor-card-body">
+            <div class="doc-info-row">
+              <span class="info-icon">🎓</span>
+              <span><strong>MBBS, DNB (Cardiology)</strong> – Sri Jayadeva Institute</span>
+            </div>
+            <div class="doc-info-row">
+              <span class="info-icon">⭐</span>
+              <span><strong>20 years</strong> of experience</span>
+            </div>
+            <div class="doc-info-row">
+              <span class="info-icon">🕐</span>
+              <span>Wed, Fri: 3:00 PM – 7:00 PM</span>
+            </div>
+            <span class="availability-badge not-available">Not Available Today</span>
+          </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="doctor-card" data-name="dr. kavitha nair" data-specialty="neurology">
+          <div class="doctor-card-top">
+            <div class="doctor-avatar">👩‍⚕️</div>
+            <h3>Dr. Kavitha Nair</h3>
+            <span class="doctor-specialty">Neurology</span>
+          </div>
+          <div class="doctor-card-body">
+            <div class="doc-info-row">
+              <span class="info-icon">🎓</span>
+              <span><strong>MBBS, MD, DM (Neurology)</strong> – PGIMER</span>
+            </div>
+            <div class="doc-info-row">
+              <span class="info-icon">⭐</span>
+              <span><strong>14 years</strong> of experience</span>
+            </div>
+            <div class="doc-info-row">
+              <span class="info-icon">🕐</span>
+              <span>Mon, Tue, Thu: 9:00 AM – 1:00 PM</span>
+            </div>
+            <span class="availability-badge available">Available Today</span>
+          </div>
+        </div>
+
+        <!-- No-results placeholder (hidden by default) -->
+        <div class="no-results" id="noResults" style="display:none;">
+          🔍 No doctors found matching your search. Try a different name or specialty.
+        </div>
+
+      </div><!-- /doctors-grid -->
+    </div>
+  </section>
+
+  <!-- ======= EMERGENCY BANNER ======= -->
+  <div class="emergency-banner">
+    <div class="container emergency-inner">
+      <div class="emg-text">
+        <span class="emg-icon">🚑</span>
+        <div>
+          <h3>Need Urgent Care? Our ER Is Open 24/7</h3>
+          <p>Walk in or call — our emergency team is always ready.</p>
+        </div>
+      </div>
+      <span class="emg-phone">📞 1800-MED-CARE</span>
+    </div>
+  </div>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="logo-text">Medi<span>Care</span> Hospital</span>
+          <p>Committed to delivering compassionate, high-quality healthcare to every patient since 1998.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Web">🌐</a>
+            <a href="#" aria-label="Twitter">🐦</a>
+            <a href="#" aria-label="Instagram">📸</a>
+            <a href="#" aria-label="LinkedIn">💼</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/doctors">Find a Doctor</a></li>
+            <li><a href="/appointments">Book Appointment</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Specialties</h4>
+          <ul>
+            <li><a href="#">General Medicine</a></li>
+            <li><a href="#">Cardiology</a></li>
+            <li><a href="#">Pediatrics</a></li>
+            <li><a href="#">Orthopedics</a></li>
+            <li><a href="#">Neurology</a></li>
+            <li><a href="#">Emergency Care</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <ul class="footer-contact">
+            <li><span>📍</span><span>123 Hospital Road, Kurnool, AP – 518001</span></li>
+            <li><span>📞</span><span>1800-MED-CARE</span></li>
+            <li><span>✉️</span><span>info@medicare-hospital.com</span></li>
+            <li><span>⏰</span><span>OPD: Mon – Sat, 8 AM – 6 PM</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 MediCare Hospital. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast-container"></div>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <!-- AI Assistant Button -->
+<div class="ai-button" onclick="toggleAssistant()">
+    🤖
+</div>
+  <!-- AI Assistant Popup -->
+<div class="ai-popup" id="aiPopup">
+
+    <div class="ai-header">
+        🤖 MediCare Assistant
+    </div>
+
+    <div class="ai-body">
+
+        <input
+            type="text"
+            id="symptomInput"
+            placeholder="Describe your symptoms">
+
+        <button
+            type="button"
+            onclick="recommendDoctor()">
+            Get Recommendation
+        </button>
+
+        <div id="recommendation"></div>
+
+    </div>
+
+</div>
+</body>
+</html>

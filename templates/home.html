@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediCare Hospital Portal</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+
+  <!-- ======= NAVBAR ======= -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="/home" class="nav-logo">
+        <div class="logo-icon">M</div>
+        <span class="logo-text">Medi<span>Care</span></span>
+      </a>
+      <div class="patient-welcome">
+          Welcome, {{ patient_name }} 👋
+      </div>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/home" class="active">Home</a></li>
+        <li><a href="/doctors">Doctors</a></li>
+        <li><a href="/appointments">Appointments</a></li>
+        <li><a href="/patient-logout">Logout</a></li>
+      </ul>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="announcement-bar">
+    <marquee behavior="scroll" direction="left">
+        🎉 Full Body Checkup at 50% Discount | 🏥 Free Diabetes Screening Camp on Sunday | ❤️ Cardiology Consultation Available | 📞 Emergency Services Available 24/7
+    </marquee>
+  </div>
+
+  <!-- ======= HERO ======= -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge"><span class="dot"></span> Trusted Since 1998</div>
+        <h1>Your Health Is Our <span>Top Priority</span></h1>
+        <p>MediCare Hospital brings world-class healthcare to your doorstep. Expert doctors, state-of-the-art technology, and compassionate care — all in one place.</p>
+        <div class="hero-btns">
+          <a href="/appointments" class="btn btn-primary">📅 Book Appointment</a>
+          <a href="/doctors" class="btn btn-outline">👨‍⚕️ Our Doctors</a>
+        </div>
+      </div>
+
+      <!-- Decorative floating cards -->
+      <div class="hero-visual">
+        <div class="hero-card-stack">
+          <div class="h-card h-card-main">
+            <div class="card-icon">🏥</div>
+            <h3>Multi-Specialty Care</h3>
+            <p>12+ departments with expert specialists available round the clock.</p>
+          </div>
+          <div class="h-card h-card-top">
+            <p style="font-size:0.8rem;color:var(--muted);margin-bottom:4px;">Doctors Available</p>
+            <span class="big-num">120+</span>
+          </div>
+          <div class="h-card h-card-left">
+            <p style="font-size:0.8rem;color:var(--muted);margin-bottom:4px;">Patients Served</p>
+            <span class="big-num" style="font-size:1.5rem;font-weight:800;color:var(--primary)">50K+</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= ABOUT ======= -->
+  <section class="about" id="about">
+    <div class="container about-inner">
+      <div class="about-img" aria-hidden="true">
+        <span>🏨</span>
+        <p>Est. 1998</p>
+      </div>
+
+      <div class="about-text">
+        <h2>Why Choose MediCare Hospital?</h2>
+        <p>For over 25 years, MediCare Hospital has been the region's most trusted name in healthcare. Our team of 120+ specialists works with cutting-edge equipment to ensure every patient receives the best possible care.</p>
+        <p>From routine checkups to complex surgeries, we deliver high-quality outcomes in a compassionate, patient-first environment.</p>
+        <div class="about-features">
+          <div class="feat-item"><span class="feat-dot"></span> NABH Accredited</div>
+          <div class="feat-item"><span class="feat-dot"></span> 24/7 Emergency Care</div>
+          <div class="feat-item"><span class="feat-dot"></span> 500+ Bed Capacity</div>
+          <div class="feat-item"><span class="feat-dot"></span> Advanced Diagnostics</div>
+          <div class="feat-item"><span class="feat-dot"></span> Online Appointments</div>
+          <div class="feat-item"><span class="feat-dot"></span> Insurance Accepted</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= SERVICES ======= -->
+  <section class="services" id="services">
+    <div class="container">
+      <h2 class="section-title">Our Specialties</h2>
+      <p class="section-subtitle">Expert care across a broad range of medical disciplines</p>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="svc-icon">🩺</div>
+          <h3>General Medicine</h3>
+          <p>Comprehensive primary care for adults — from routine health checks to managing chronic conditions like diabetes and hypertension.</p>
+        </div>
+        <div class="service-card">
+          <div class="svc-icon">❤️</div>
+          <h3>Cardiology</h3>
+          <p>State-of-the-art cardiac care including ECG, echocardiography, angiography, and open-heart surgery by experienced cardiologists.</p>
+        </div>
+        <div class="service-card">
+          <div class="svc-icon">👶</div>
+          <h3>Pediatrics</h3>
+          <p>Dedicated child healthcare from newborn care to adolescent medicine, with a team that makes every visit feel safe and friendly.</p>
+        </div>
+        <div class="service-card">
+          <div class="svc-icon">🚨</div>
+          <h3>Emergency Care</h3>
+          <p>Round-the-clock emergency services with rapid response teams, trauma units, and fully equipped critical care facilities.</p>
+        </div>
+        <div class="service-card">
+          <div class="svc-icon">🦴</div>
+          <h3>Orthopedics</h3>
+          <p>Advanced bone, joint, and muscle care — from sports injuries and arthritis management to complex joint replacement surgeries.</p>
+        </div>
+        <div class="service-card">
+          <div class="svc-icon">🧠</div>
+          <h3>Neurology</h3>
+          <p>Expert diagnosis and treatment of neurological conditions including stroke, epilepsy, Parkinson's disease, and migraine disorders.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= STATS ======= -->
+  <section class="stats" id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-num" id="stat-doctors">0</span>
+          <span class="stat-label">Specialist Doctors</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" id="stat-patients">0</span>
+          <span class="stat-label">Patients Served</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" id="stat-beds">0</span>
+          <span class="stat-label">Beds Available</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" id="stat-depts">0</span>
+          <span class="stat-label">Departments</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= EMERGENCY BANNER ======= -->
+  <div class="emergency-banner">
+    <div class="container emergency-inner">
+      <div class="emg-text">
+        <span class="emg-icon">🚑</span>
+        <div>
+          <h3>Medical Emergency? We're Here 24/7</h3>
+          <p>Our emergency team is always on standby — don't wait, call us now.</p>
+        </div>
+      </div>
+      <span class="emg-phone">📞 1800-MED-CARE</span>
+    </div>
+  </div>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="logo-text">Medi<span>Care</span> Hospital</span>
+          <p>Committed to delivering compassionate, high-quality healthcare to every patient since 1998. Your health is our mission.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">🌐</a>
+            <a href="#" aria-label="Twitter">🐦</a>
+            <a href="#" aria-label="Instagram">📸</a>
+            <a href="#" aria-label="LinkedIn">💼</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/doctors">Find a Doctor</a></li>
+            <li><a href="/appointments">Book Appointment</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">General Medicine</a></li>
+            <li><a href="#">Cardiology</a></li>
+            <li><a href="#">Pediatrics</a></li>
+            <li><a href="#">Emergency Care</a></li>
+            <li><a href="#">Orthopedics</a></li>
+            <li><a href="#">Neurology</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <ul class="footer-contact">
+            <li><span>📍</span><span>123 Hospital Road, Kurnool, Andhra Pradesh – 518001</span></li>
+            <li><span>📞</span><span>1800-MED-CARE (Toll Free)</span></li>
+            <li><span>✉️</span><span>info@medicare-hospital.com</span></li>
+            <li><span>⏰</span><span>OPD: Mon – Sat, 8 AM – 6 PM</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 MediCare Hospital. All rights reserved. | Designed for educational purposes.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast container -->
+  <div id="toast-container"></div>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <!-- AI Assistant Button -->
+<div class="ai-button" onclick="toggleAssistant()">
+    🤖
+</div>
+  <!-- AI Assistant Popup -->
+<div class="ai-popup" id="aiPopup">
+
+    <div class="ai-header">
+        🤖 MediCare Assistant
+    </div>
+
+    <div class="ai-body">
+
+        <input
+            type="text"
+            id="symptomInput"
+            placeholder="Describe your symptoms">
+
+        <button
+            type="button"
+            onclick="recommendDoctor()">
+            Get Recommendation
+        </button>
+
+        <div id="recommendation"></div>
+
+    </div>
+
+</div>
+</body>
+</html>

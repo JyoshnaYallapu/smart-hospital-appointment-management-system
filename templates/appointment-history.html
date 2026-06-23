@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Appointment History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="container" style="padding:40px">
+
+    <h1>Completed Appointment History</h1>
+
+    <a href="/doctor-dashboard">← Back to Dashboard</a>
+
+    <br><br>
+
+    <table border="1" cellpadding="10">
+
+        <tr>
+            <th>Patient</th>
+            <th>Doctor</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Symptoms</th>
+            <th>Status</th>
+        </tr>
+
+        {% for appt in appointments %}
+
+        <tr>
+            <td>{{ appt[1] }}</td>
+            <td>{{ appt[4] }}</td>
+            <td>{{ appt[5] }}</td>
+            <td>{{ appt[6] }}</td>
+            <td>{{ appt[7] }}</td>
+            <td>{{ appt[8] }}</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+</body>
+</html>

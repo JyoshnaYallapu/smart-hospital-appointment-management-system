@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doctor Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/doctor.css') }}">
+</head>
+<body>
+
+<div class="dashboard-container">
+
+    <div class="top-bar">
+
+        <div>
+            <h1 class="doctor-name">
+                Welcome {{ doctor_name }}
+            </h1>
+
+            <p class="subtitle">
+                Manage your appointments and patient records
+            </p>
+        </div>
+
+        <div class="top-actions">
+            <a href="/appointment-history" class="btn">
+                Appointment History
+            </a>
+
+            <a href="/logout" class="btn logout-btn">
+                Logout
+            </a>
+        </div>
+
+    </div>
+
+    <hr>
+    <div class="stats">
+
+    <div class="stat-card">
+        <h2>{{ total }}</h2>
+        <p>Total Appointments</p>
+    </div>
+
+    <div class="stat-card">
+        <h2>{{ pending }}</h2>
+        <p>Pending Appointments</p>
+    </div>
+
+    <div class="stat-card">
+        <h2>{{ completed }}</h2>
+        <p>Completed Appointments</p>
+    </div>
+
+    </div>
+
+    <form method="GET" action="/doctor-dashboard">
+
+        <label>Select Date:</label>
+
+        <input type="date" name="selected_date">
+
+        <button type="submit">
+            View Appointments
+        </button>
+
+    </form>
+
+    <br>
+
+    <h3>Appointments</h3>
+    {% if appointments|length == 0 %}
+
+    <h3 style="color:green;">
+        🎉 No Pending Appointments
+    </h3>
+
+    {% else %}
+
+
+
+    <table border="1" cellpadding="10">
+
+        <tr>
+            <th>Patient</th>
+            <th>Phone</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Symptoms</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+
+        {% for appt in appointments %}
+
+        <tr>
+            <td>{{ appt[1] }}</td>
+            <td>{{ appt[2] }}</td>
+            <td>{{ appt[5] }}</td>
+            <td>{{ appt[6] }}</td>
+            <td>{{ appt[7] }}</td>
+            <td>{{ appt[8] }}</td>
+
+            <td>
+
+            {% if appt[8] == 'Pending' %}
+
+            <a href="/complete-appointment/{{ appt[0] }}">
+                Complete
+            </a>
+
+            {% else %}
+
+            Completed
+
+            {% endif %}
+
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+    {% endif %}
+
+
+</div>
+
+</body>
+</html>
