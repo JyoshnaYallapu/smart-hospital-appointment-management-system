@@ -446,7 +446,11 @@ def delete_appointment(id):
 # ==========================
 # MAIN
 # ==========================
+import os
+
 if __name__ == '__main__':
     create_tables()
     insert_doctors()
-    app.run(debug=True)
+
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
